@@ -98,7 +98,7 @@ namespace Neural_Network
         #endregion
 
         /// <summary>
-        /// 
+        /// Realiza o calculo do ajuste de pesos
         /// </summary>
         public void WeightsAdjustment()
         {
