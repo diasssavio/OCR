@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace OCR
 {
@@ -19,12 +20,12 @@ namespace OCR
         public Form1()
         {
             // Allocating inputs matrix
-            inputs = new double[9][];
+            inputs = new double[10][];
             for (int i = 0; i < inputs.Length; i++)
                 inputs[i] = new double[35];
 
-            // Creating the network - 10 neurons on Hidden Layer, 10 neurons on Out Layer, 0.1 of Learning Rate
-            network = new MultiLayerPerceptronNetwork(10, 10, 0.1);
+            // Creating the network - 35 on In Layer, 10 neurons on Hidden Layer, 10 neurons on Out Layer, 0.1 of Learning Rate
+            network = new MultiLayerPerceptronNetwork(35, 10, 10, 0.1);
 
             InitializeComponent();
         }
@@ -430,6 +431,8 @@ namespace OCR
                 // number 9
                 network.Backward(inputs[9], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0 });
             }
+
+            MessageBox.Show("Rede treinada com sucesso");
         }
 
         /// <summary>
@@ -466,6 +469,66 @@ namespace OCR
             network.Input = GetGridMatrix();
             network.SetInputOnHiddenLayer();
             network.Forward();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            // number 0
+            string[] lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\0.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[0][i] = Convert.ToDouble(lines[i]);
+
+            // number 1
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\1.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[1][i] = Convert.ToDouble(lines[i]);
+
+            // number 2
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\2.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[2][i] = Convert.ToDouble(lines[i]);
+
+            // number 3
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\3.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[3][i] = Convert.ToDouble(lines[i]);
+
+            // number 4
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\4.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[4][i] = Convert.ToDouble(lines[i]);
+
+            // number 5
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\5.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[5][i] = Convert.ToDouble(lines[i]);
+
+            // number 6
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\6.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[6][i] = Convert.ToDouble(lines[i]);
+
+            // number 7
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\7.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[7][i] = Convert.ToDouble(lines[i]);
+
+            // number 8
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\8.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[8][i] = Convert.ToDouble(lines[i]);
+
+            // number 9
+            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\9.txt");
+            for (int i = 0; i < lines.Length; i++)
+                inputs[9][i] = Convert.ToDouble(lines[i]);
+
+            MessageBox.Show("Dados carregados com sucesso do arquivo");
         }
         #endregion
     }

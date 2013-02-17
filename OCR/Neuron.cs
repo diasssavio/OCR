@@ -35,7 +35,8 @@ namespace OCR
         /// 
         /// </summary>
         /// <param name="learningRate"></param>
-        public Neuron(double learningRate){
+        public Neuron(int inputAmount, double learningRate){
+            Input = new double[inputAmount];
             LearningRate = learningRate;
         }
 
@@ -47,7 +48,6 @@ namespace OCR
         public Neuron(double[] input, double learningRate)
         {
             Input = input;
-            //SortWeights();
             LearningRate = learningRate;
         }
         #endregion
@@ -63,7 +63,7 @@ namespace OCR
         /// <summary>
         /// Sorteia o peso para cada entrada incluindo o bias
         /// </summary>
-        private void SortWeights()
+        public void SortWeights()
         {
             // Instantiating weights vector
             // First position to store bias weight

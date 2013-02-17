@@ -24,26 +24,30 @@ namespace OCR
         /// <param name="hiddenLayerAmount">Quantidade de neurônios na camada oculta</param>
         /// <param name="outLayerAmount">Quantidade de neurônios na camada de saída</param>
         /// <param name="learningRate">Taxa de aprendizado</param>
-        public MultiLayerPerceptronNetwork(int hiddenLayerAmount, int outLayerAmount, double learningRate)
+        public MultiLayerPerceptronNetwork(int inputAmount, int hiddenLayerAmount, int outLayerAmount, double learningRate)
         {
             LearningRate = learningRate;
+
+            // Allocating Input Layer
+            Input = new double[inputAmount];
 
             // Allocating Hidden Layer
                 HiddenLayer = new Neuron[hiddenLayerAmount];
                 // Instantiating Neurons from Hidden Layer
                 for (int i = 0; i < HiddenLayer.Length; i++)
-                    HiddenLayer[i] = new Neuron(LearningRate);
+                    HiddenLayer[i] = new Neuron(Input.Length, LearningRate);
             //
 
             // Allocating Output Layer
                 OutLayer = new Neuron[outLayerAmount];
                 // Instantiating Neurons from Output Layer
                 for (int i = 0; i < OutLayer.Length; i++)
-                    OutLayer[i] = new Neuron(LearningRate);
+                    OutLayer[i] = new Neuron(HiddenLayer.Length, LearningRate);
             //
             
-            // Setting Weights manually
-                SetManuallyWeights();
+            // Setting Weights
+            SortWeights();
+            //SetManuallyWeights();
         }
 
         /// <summary>
@@ -62,18 +66,19 @@ namespace OCR
                 HiddenLayer = new Neuron[ hiddenLayerAmount ];
                 // Instantiating Neurons from Hidden Layer
                 for (int i = 0; i < HiddenLayer.Length; i++)
-                    HiddenLayer[i] = new Neuron(LearningRate);
+                    HiddenLayer[i] = new Neuron(Input.Length, LearningRate);
             //
 
             // Allocating Output Layer
                 OutLayer = new Neuron[ outLayerAmount ];
                 // Instantiating Neurons from Output Layer
                 for (int i = 0; i < OutLayer.Length; i++)
-                    OutLayer[i] = new Neuron(LearningRate);
+                    OutLayer[i] = new Neuron(HiddenLayer.Length, LearningRate);
             //
 
-            // Setting Weights manually
-            SetManuallyWeights();
+            // Setting Weights
+            SortWeights();
+            //SetManuallyWeights();
 
             // Set input on the hidden layer
             SetInputOnHiddenLayer();
@@ -121,6 +126,14 @@ namespace OCR
                 errors[i + OutLayer.Length] = HiddenLayer[i].BackPropagatedError;
 
             return errors;
+        }
+
+        private void SortWeights()
+        {
+            foreach (Neuron neuron in HiddenLayer)
+                neuron.SortWeights();
+            foreach (Neuron neuron in OutLayer)
+                neuron.SortWeights();
         }
 
         /// <summary>
