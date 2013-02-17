@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Neural_Network
+namespace OCR
 {
     class MultiLayerPerceptronNetwork
     {
@@ -136,7 +136,7 @@ namespace Neural_Network
         /// <summary>
         /// Define a entrada nos neurônios da camada oculta
         /// </summary>
-        private void SetInputOnHiddenLayer()
+        public void SetInputOnHiddenLayer()
         {
             // Put values "input" in the "position" layer
             if (Input != null)

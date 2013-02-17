@@ -14,6 +14,7 @@ namespace OCR
     {
         // inputs
         private double[][] inputs;
+        private MultiLayerPerceptronNetwork network;
 
         public Form1()
         {
@@ -22,9 +23,13 @@ namespace OCR
             for (int i = 0; i < inputs.Length; i++)
                 inputs[i] = new double[35];
 
+            // Creating the network - 10 neurons on Hidden Layer, 10 neurons on Out Layer, 0.1 of Learning Rate
+            network = new MultiLayerPerceptronNetwork(10, 10, 0.1);
+
             InitializeComponent();
         }
 
+        #region Utilities Functions
         /// <summary>
         /// Muda a cor de fundo (preto<->branco) do button passado como parametro
         /// </summary>
@@ -80,46 +85,59 @@ namespace OCR
         }
 
         /// <summary>
+        /// Monta um vetor representando a matriz preenchida e o retorna
+        /// </summary>
+        /// <returns>vetor representando a matriz preenchida</returns>
+        private double[] GetGridMatrix()
+        {
+            double[] matrix = new double[35];
+
+            matrix[0] = (button5.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[1] = (button4.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[2] = (button3.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[3] = (button2.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[4] = (button1.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[5] = (button10.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[6] = (button9.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[7] = (button8.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[8] = (button7.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[9] = (button6.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[10] = (button15.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[11] = (button14.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[12] = (button13.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[13] = (button12.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[14] = (button11.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[15] = (button20.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[16] = (button19.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[17] = (button18.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[18] = (button17.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[19] = (button16.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[20] = (button25.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[21] = (button24.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[22] = (button23.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[23] = (button22.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[24] = (button21.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[25] = (button30.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[26] = (button29.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[27] = (button28.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[28] = (button27.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[29] = (button26.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[30] = (button35.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[31] = (button34.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[32] = (button33.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[33] = (button32.BackColor == Color.White) ? -1.0 : 1.0;
+            matrix[34] = (button31.BackColor == Color.White) ? -1.0 : 1.0;
+
+            return matrix;
+        }
+
+        /// <summary>
         /// Monta o vetor que representa o número index (nessa posição)
         /// </summary>
         /// <param name="index">indice do número representado pela grade</param>
         private void MountMatrix(int index)
         {
-            inputs[index][0] = (button5.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][1] = (button4.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][2] = (button3.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][3] = (button2.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][4] = (button1.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][5] = (button10.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][6] = (button9.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][7] = (button8.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][8] = (button7.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][9] = (button6.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][10] = (button15.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][11] = (button14.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][12] = (button13.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][13] = (button12.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][14] = (button11.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][15] = (button20.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][16] = (button19.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][17] = (button18.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][18] = (button17.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][19] = (button16.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][20] = (button25.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][21] = (button24.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][22] = (button23.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][23] = (button22.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][24] = (button21.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][25] = (button30.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][26] = (button29.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][27] = (button28.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][28] = (button27.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][29] = (button26.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][30] = (button35.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][31] = (button34.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][32] = (button33.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][33] = (button32.BackColor == Color.White) ? -1.0 : 1.0;
-            inputs[index][34] = (button31.BackColor == Color.White) ? -1.0 : 1.0;
+            inputs[index] = GetGridMatrix();
         }
 
         /// <summary>
@@ -164,6 +182,7 @@ namespace OCR
             button32.BackColor = (inputs[index][33] == -1.0) ? Color.White : Color.Black;
             button31.BackColor = (inputs[index][34] == -1.0) ? Color.White : Color.Black;
         }
+        #endregion
 
         #region Matrix Clicks
         private void button1_Click(object sender, EventArgs e)
@@ -342,6 +361,12 @@ namespace OCR
         }
         #endregion
 
+        #region Other Buttons Events
+        /// <summary>
+        /// Clique no botão "Memorizar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void memorizeButton_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex != -1)
@@ -352,6 +377,11 @@ namespace OCR
             else MessageBox.Show("Escolha um número válido");
         }
 
+        /// <summary>
+        /// Clique no botão "Mostrar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void showButton_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex != -1)
@@ -360,26 +390,83 @@ namespace OCR
                 MessageBox.Show("Escolha um número válido");
         }
 
+        /// <summary>
+        /// Clique no botão "Treinar"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void trainButton_Click(object sender, EventArgs e)
         {
+            // Training network
+            for (int i = 0; i < 1000; i++)
+            {
+                // number 0
+                network.Backward(inputs[0], new double[] { 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
 
+                // number 1
+                network.Backward(inputs[1], new double[] { -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+
+                // number 2
+                network.Backward(inputs[2], new double[] { -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+
+                // number 3
+                network.Backward(inputs[3], new double[] { -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+
+                // number 4
+                network.Backward(inputs[4], new double[] { -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+
+                // number 5
+                network.Backward(inputs[5], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0 });
+
+                // number 6
+                network.Backward(inputs[6], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0 });
+
+                // number 7
+                network.Backward(inputs[7], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0 });
+
+                // number 8
+                network.Backward(inputs[8], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0 });
+
+                // number 9
+                network.Backward(inputs[9], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0 });
+            }
         }
 
+        /// <summary>
+        /// Clique no botão "Limpar Grade"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cleanGridButton_Click(object sender, EventArgs e)
         {
             CleanGrid();
         }
 
+        /// <summary>
+        /// Clique no botão "Limpar Tudo"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cleanAllButton_Click(object sender, EventArgs e)
         {
             CleanGrid();
             comboBox1.SelectedIndex = -1;
+            comboBox1.Text = "Número #";
             textBox1.Text = "";
         }
 
+        /// <summary>
+        /// Clique no botão "Reconhecer"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void recognitionButton_Click(object sender, EventArgs e)
         {
-
+            // Getting any output from network
+            network.Input = GetGridMatrix();
+            network.SetInputOnHiddenLayer();
+            network.Forward();
         }
+        #endregion
     }
 }
