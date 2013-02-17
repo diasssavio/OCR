@@ -80,6 +80,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -680,21 +681,22 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.saveButton);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.recognitionButton);
             this.groupBox3.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.White;
             this.groupBox3.Location = new System.Drawing.Point(474, 283);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(275, 133);
+            this.groupBox3.Size = new System.Drawing.Size(275, 171);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Reconhecimento";
+            this.groupBox3.Text = "Saída";
             // 
             // textBox1
             // 
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(71, 76);
+            this.textBox1.Location = new System.Drawing.Point(71, 115);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(133, 38);
             this.textBox1.TabIndex = 1;
@@ -706,9 +708,9 @@
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(474, 422);
+            this.groupBox4.Location = new System.Drawing.Point(474, 460);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(275, 241);
+            this.groupBox4.Size = new System.Drawing.Size(275, 203);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Desenvolvedores";
@@ -739,6 +741,18 @@
             this.label1.Size = new System.Drawing.Size(157, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Sávio S. Dias";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.ForeColor = System.Drawing.Color.Black;
+            this.saveButton.Location = new System.Drawing.Point(71, 76);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(133, 33);
+            this.saveButton.TabIndex = 2;
+            this.saveButton.Text = "Salvar";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // Form1
             // 
@@ -818,6 +832,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button showButton;
         private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.Button saveButton;
 
 
     }
