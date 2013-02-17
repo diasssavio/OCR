@@ -21,9 +21,9 @@ namespace Neural_Network
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="hiddenLayerAmount"></param>
-        /// <param name="outLayerAmount"></param>
-        /// <param name="learningRate"></param>
+        /// <param name="hiddenLayerAmount">Quantidade de neurônios na camada oculta</param>
+        /// <param name="outLayerAmount">Quantidade de neurônios na camada de saída</param>
+        /// <param name="learningRate">Taxa de aprendizado</param>
         public MultiLayerPerceptronNetwork(int hiddenLayerAmount, int outLayerAmount, double learningRate)
         {
             LearningRate = learningRate;
