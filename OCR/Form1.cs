@@ -24,8 +24,8 @@ namespace OCR
             for (int i = 0; i < inputs.Length; i++)
                 inputs[i] = new double[35];
 
-            // Creating the network - 35 on In Layer, 10 neurons on Hidden Layer, 10 neurons on Out Layer, 0.1 of Learning Rate
-            network = new MultiLayerPerceptronNetwork(35, 10, 10, 0.1);
+            // Creating the network - 35 on In Layer, 10 neurons on Hidden Layer, 10 neurons on Out Layer, 0.01 of Learning Rate
+            network = new MultiLayerPerceptronNetwork(35, 10, 10, 0.01);
 
             InitializeComponent();
         }
@@ -460,7 +460,7 @@ namespace OCR
         private void trainButton_Click(object sender, EventArgs e)
         {
             // Training network
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 // number 0
                 network.Backward(inputs[0], new double[] { 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
@@ -517,6 +517,9 @@ namespace OCR
             comboBox1.SelectedIndex = -1;
             comboBox1.Text = "Número #";
             textBox1.Text = "";
+
+            // Restarting the network
+            network = new MultiLayerPerceptronNetwork(35, 10, 10, 0.01);
         }
 
         /// <summary>
@@ -530,6 +533,13 @@ namespace OCR
             network.Input = GetGridMatrix();
             network.SetInputOnHiddenLayer();
             network.Forward();
+
+            string[] numbersName = new string[] { "Zero", "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove" };
+
+            for (int i = 0; i < network.GetOutputs().Length; i++)
+                if (network.GetOutputs()[i] > 0.0)
+                    textBox1.Text = numbersName[i];
+
         }
 
         /// <summary>
@@ -550,5 +560,6 @@ namespace OCR
             File.WriteAllText(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\Output.txt", toSave);
         }
         #endregion
+
     }
 }

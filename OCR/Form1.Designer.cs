@@ -75,12 +75,12 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.recognitionButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.saveButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -671,7 +671,7 @@
             // 
             this.recognitionButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recognitionButton.ForeColor = System.Drawing.Color.Black;
-            this.recognitionButton.Location = new System.Drawing.Point(71, 37);
+            this.recognitionButton.Location = new System.Drawing.Point(71, 76);
             this.recognitionButton.Name = "recognitionButton";
             this.recognitionButton.Size = new System.Drawing.Size(133, 33);
             this.recognitionButton.TabIndex = 0;
@@ -692,6 +692,18 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Saída";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.ForeColor = System.Drawing.Color.Black;
+            this.saveButton.Location = new System.Drawing.Point(71, 37);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(133, 33);
+            this.saveButton.TabIndex = 2;
+            this.saveButton.Text = "Salvar";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // textBox1
             // 
@@ -741,18 +753,6 @@
             this.label1.Size = new System.Drawing.Size(157, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Sávio S. Dias";
-            // 
-            // saveButton
-            // 
-            this.saveButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.ForeColor = System.Drawing.Color.Black;
-            this.saveButton.Location = new System.Drawing.Point(71, 76);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(133, 33);
-            this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "Salvar";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // Form1
             // 
