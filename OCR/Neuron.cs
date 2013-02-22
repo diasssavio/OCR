@@ -74,16 +74,15 @@ namespace OCR
 
             // Filling the weights vector
             for (int i = 0; i < Weights.Length; i++)
-                Weights[i] = random.Next(-1000, 1000) / 1000.0;
+                Weights[i] = random.Next(-100, 100) / 100.0;
         }
 
         #region Error's calculus
         /// <summary>
-        /// 
+        /// Calcula o Erro
         /// </summary>
         public void CalculateError()
         {
-            // Error calculation
             Error = ExpectedOutput - Output;
         }
 

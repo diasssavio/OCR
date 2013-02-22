@@ -78,9 +78,13 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.saveVariantsButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -567,7 +571,7 @@
             this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(474, 0);
+            this.groupBox2.Location = new System.Drawing.Point(474, 209);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(275, 277);
             this.groupBox2.TabIndex = 1;
@@ -686,7 +690,7 @@
             this.groupBox3.Controls.Add(this.recognitionButton);
             this.groupBox3.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(474, 283);
+            this.groupBox3.Location = new System.Drawing.Point(474, 492);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(275, 171);
             this.groupBox3.TabIndex = 2;
@@ -715,44 +719,84 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.saveVariantsButton);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.textBox4);
+            this.groupBox4.Controls.Add(this.textBox3);
+            this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(474, 460);
+            this.groupBox4.Location = new System.Drawing.Point(474, 0);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(275, 203);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Desenvolvedores";
+            this.groupBox4.Text = "Rede Neural";
             // 
-            // label3
+            // textBox2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 33);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Presley McQuade";
+            this.textBox2.Location = new System.Drawing.Point(198, 23);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(64, 38);
+            this.textBox2.TabIndex = 0;
             // 
-            // label2
+            // textBox3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 33);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ítalo Gomes";
+            this.textBox3.Location = new System.Drawing.Point(198, 67);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(64, 38);
+            this.textBox3.TabIndex = 1;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(198, 112);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(64, 38);
+            this.textBox4.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 38);
+            this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 33);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Sávio S. Dias";
+            this.label1.Size = new System.Drawing.Size(166, 25);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Taxa Aprendizado";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 25);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Camada Oculta";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(5, 121);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 25);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Iterações (x1000)";
+            // 
+            // saveVariantsButton
+            // 
+            this.saveVariantsButton.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveVariantsButton.ForeColor = System.Drawing.Color.Black;
+            this.saveVariantsButton.Location = new System.Drawing.Point(71, 164);
+            this.saveVariantsButton.Name = "saveVariantsButton";
+            this.saveVariantsButton.Size = new System.Drawing.Size(133, 33);
+            this.saveVariantsButton.TabIndex = 3;
+            this.saveVariantsButton.Text = "Criar Rede";
+            this.saveVariantsButton.UseVisualStyleBackColor = true;
+            this.saveVariantsButton.Click += new System.EventHandler(this.saveVariantsButton_Click);
             // 
             // Form1
             // 
@@ -827,12 +871,16 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button showButton;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button saveVariantsButton;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
 
 
     }

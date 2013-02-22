@@ -47,7 +47,6 @@ namespace OCR
             
             // Setting Weights
             SortWeights();
-            //SetManuallyWeights();
         }
 
         /// <summary>
@@ -128,6 +127,9 @@ namespace OCR
             return errors;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void SortWeights()
         {
             foreach (Neuron neuron in HiddenLayer)

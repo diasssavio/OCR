@@ -15,6 +15,7 @@ namespace OCR
     {
         // inputs
         private double[][] inputs;
+        private int iterations;
         private MultiLayerPerceptronNetwork network;
 
         public Form1()
@@ -23,9 +24,6 @@ namespace OCR
             inputs = new double[10][];
             for (int i = 0; i < inputs.Length; i++)
                 inputs[i] = new double[35];
-
-            // Creating the network - 35 on In Layer, 10 neurons on Hidden Layer, 10 neurons on Out Layer, 0.01 of Learning Rate
-            network = new MultiLayerPerceptronNetwork(35, 10, 10, 0.01);
 
             InitializeComponent();
         }
@@ -365,6 +363,22 @@ namespace OCR
         #region Other Buttons Events
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void saveVariantsButton_Click(object sender, EventArgs e)
+        {
+            // Saving iterations amount
+            iterations = Convert.ToInt32(textBox4.Text);
+            
+            // Creating the network - 35 on In Layer, neurons on Hidden Layer, 10 neurons on Out Layer, Learning Rate
+            network = new MultiLayerPerceptronNetwork(35, Convert.ToInt32(textBox3.Text), 10, Convert.ToDouble(textBox2.Text));
+
+            MessageBox.Show("Rede neural criada com sucesso!");
+        }
+
+        /// <summary>
         /// Clique no botão "Carregar"
         /// </summary>
         /// <param name="sender"></param>
@@ -460,37 +474,50 @@ namespace OCR
         private void trainButton_Click(object sender, EventArgs e)
         {
             // Training network
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < (iterations * 1000); i++)
             {
+                //Console.WriteLine("{0}:", i);
                 // number 0
                 network.Backward(inputs[0], new double[] { 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 1
                 network.Backward(inputs[1], new double[] { -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 2
                 network.Backward(inputs[2], new double[] { -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 3
                 network.Backward(inputs[3], new double[] { -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 4
                 network.Backward(inputs[4], new double[] { -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 5
                 network.Backward(inputs[5], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 6
                 network.Backward(inputs[6], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 7
                 network.Backward(inputs[7], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 8
                 network.Backward(inputs[8], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
 
                 // number 9
                 network.Backward(inputs[9], new double[] { -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, 1.0 });
+                //Console.WriteLine("{0:f6}\t {1:f6}\t {2:f6}\t {3:f6}\t {4:f6}\t {5:f6}\t {6:f6}\t {7:f6}\t {8:f6}\t {9:f6}\t", network.GetOutputs()[0], network.GetOutputs()[1], network.GetOutputs()[2], network.GetOutputs()[3], network.GetOutputs()[4], network.GetOutputs()[5], network.GetOutputs()[6], network.GetOutputs()[7], network.GetOutputs()[8], network.GetOutputs()[9]);
+
+                //Console.WriteLine();
             }
 
             MessageBox.Show("Rede treinada com sucesso");
@@ -518,8 +545,10 @@ namespace OCR
             comboBox1.Text = "Número #";
             textBox1.Text = "";
 
-            // Restarting the network
-            network = new MultiLayerPerceptronNetwork(35, 10, 10, 0.01);
+            // Deleting the network
+            network = null;
+
+            MessageBox.Show("Memória limpa com sucesso");
         }
 
         /// <summary>
@@ -529,6 +558,9 @@ namespace OCR
         /// <param name="e"></param>
         private void recognitionButton_Click(object sender, EventArgs e)
         {
+            // Cleaning textBox
+            textBox1.Text = "";
+
             // Getting any output from network
             network.Input = GetGridMatrix();
             network.SetInputOnHiddenLayer();
@@ -536,8 +568,9 @@ namespace OCR
 
             string[] numbersName = new string[] { "Zero", "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove" };
 
-            for (int i = 0; i < network.GetOutputs().Length; i++)
-                if (network.GetOutputs()[i] > 0.0)
+            double[] output = network.GetOutputs();
+            for (int i = 0; i < output.Length; i++)
+                if (output[i] > 0.0)
                     textBox1.Text = numbersName[i];
 
         }
@@ -558,8 +591,9 @@ namespace OCR
                 toSave += Convert.ToString(output) + "\t";
 
             File.WriteAllText(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\Output.txt", toSave);
+
+            MessageBox.Show(@"Saída salva em: ´C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\Output.txt´");
         }
         #endregion
-
     }
 }
