@@ -18,6 +18,8 @@ namespace OCR
         private int iterations;
         private MultiLayerPerceptronNetwork network;
 
+        private string programFolder = @"C:\Users\Savio Dias\Documents\GitHub\OCR\";
+
         public Form1()
         {
             // Allocating inputs matrix
@@ -386,52 +388,52 @@ namespace OCR
         private void loadButton_Click(object sender, EventArgs e)
         {
             // number 0
-            string[] lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\0.txt");
+            string[] lines = File.ReadAllLines(programFolder + @"\OCR\Files\0.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[0][i] = Convert.ToDouble(lines[i]);
 
             // number 1
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\1.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\1.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[1][i] = Convert.ToDouble(lines[i]);
 
             // number 2
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\2.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\2.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[2][i] = Convert.ToDouble(lines[i]);
 
             // number 3
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\3.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\3.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[3][i] = Convert.ToDouble(lines[i]);
 
             // number 4
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\4.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\4.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[4][i] = Convert.ToDouble(lines[i]);
 
             // number 5
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\5.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\5.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[5][i] = Convert.ToDouble(lines[i]);
 
             // number 6
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\6.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\6.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[6][i] = Convert.ToDouble(lines[i]);
 
             // number 7
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\7.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\7.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[7][i] = Convert.ToDouble(lines[i]);
 
             // number 8
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\8.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\8.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[8][i] = Convert.ToDouble(lines[i]);
 
             // number 9
-            lines = File.ReadAllLines(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\9.txt");
+            lines = File.ReadAllLines(programFolder + @"\OCR\Files\9.txt");
             for (int i = 0; i < lines.Length; i++)
                 inputs[9][i] = Convert.ToDouble(lines[i]);
 
@@ -590,9 +592,9 @@ namespace OCR
             foreach (double output in network.GetOutputs())
                 toSave += Convert.ToString(output) + "\t";
 
-            File.WriteAllText(@"C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\Output.txt", toSave);
+            File.WriteAllText(programFolder + @"OCR\Files\Output.txt", toSave);
 
-            MessageBox.Show(@"Saída salva em: ´C:\Users\Savio Dias\Documents\GitHub\OCR\OCR\Files\Output.txt´");
+            MessageBox.Show(@"Saída salva em: ´" + programFolder + @"\OCR\Files\Output.txt´");
         }
         #endregion
     }
