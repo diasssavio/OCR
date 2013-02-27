@@ -571,8 +571,9 @@ namespace OCR
             string[] numbersName = new string[] { "Zero", "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove" };
 
             double[] output = network.GetOutputs();
+            double max = output.Max();
             for (int i = 0; i < output.Length; i++)
-                if (output[i] > 0.0)
+                if (output[i] == max)
                     textBox1.Text = numbersName[i];
 
         }
